@@ -22,12 +22,6 @@ public class Movement : MonoBehaviour
         input.y = Input.GetAxisRaw("Vertical");
 
         input.Normalize();
-
-        if (Input.GetKeyDown("left shift"))
-        {
-            playerSpeed = 200f;
-        }
-
     }
 
     private void FixedUpdate()
