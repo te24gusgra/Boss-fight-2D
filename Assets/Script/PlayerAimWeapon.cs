@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 
-public class PlayerFireball : MonoBehaviour
+public class PlayerAimWeapon : MonoBehaviour
 {
     [SerializeField] private Transform aimTransform;
+    [SerializeField] private Transform playerTransform;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -14,12 +16,13 @@ public class PlayerFireball : MonoBehaviour
     void Update()
     {
         Vector3 mousePosition = GetMouseWorldPosition(); 
-
         Vector3 aimDirection = (mousePosition - aimTransform.position).normalized;
-
+        Vector3 playerPosition = GetMouseWorldPosition();
+        Vector3 playerDirection = (mousePosition - aimTransform.position).normalized;
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
 
-        aimTransform.eulerAngles = new Vector3(0,0,angle);
+        aimTransform.eulerAngles = new Vector3(0, 0, angle + 90);
+        playerTransform.eulerAngles = new Vector3(0, 0, angle + 90);
     }
 
     private Vector3 GetMouseWorldPosition()
