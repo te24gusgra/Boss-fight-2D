@@ -1377,7 +1377,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 4
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1419,7 +1419,7 @@ GameObject:
   - component: {fileID: 532052366}
   - component: {fileID: 532052367}
   m_Layer: 0
-  m_Name: Sprite
+  m_Name: Player skin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50493,10 +50493,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cd6837c126927542b66a7caa415a993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShootWeapon
-  cooldown: 5
-  fireballPrefab: {fileID: 0}
-  firepoint: {fileID: 0}
-  sparkFlashAnimator: {fileID: 0}
+  cooldown: 0
+  fireballPrefab: {fileID: 6645570611311128467, guid: 6978aed015e9a6e4e9968f26c7f2dcd2, type: 3}
+  firepoint: {fileID: 1463383875}
 --- !u!1 &1012359238
 GameObject:
   m_ObjectHideFlags: 0
@@ -52294,7 +52293,7 @@ Transform:
   m_GameObject: {fileID: 1633131527}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.49, y: 0.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

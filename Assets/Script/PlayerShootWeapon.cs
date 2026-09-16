@@ -3,12 +3,11 @@ using UnityEngine;
 
 public class PlayerShootWeapon : MonoBehaviour
 {
-    [SerializeField] private float cooldown = 5f;
+    [SerializeField] private float cooldown;
     private float cooldownTimer;
 
     [SerializeField] private GameObject fireballPrefab;
     [SerializeField] private Transform firepoint;
-    [SerializeField] private Animator sparkFlashAnimator;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -31,8 +30,9 @@ public class PlayerShootWeapon : MonoBehaviour
         if (cooldownTimer < cooldown) return;
 
         GameObject fireball = Instantiate(fireballPrefab, firepoint.position, firepoint.rotation,null);
-        sparkFlashAnimator.SetTrigger("shoot");
+        fireball.GetComponent<Projectile>().ShootBullet(firepoint);
 
+        cooldown = 1f;
         cooldownTimer = 0;
     }
 }
