@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -6,8 +7,10 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private float lifetime = 3f;
     private float lifeTimer;
-
     public Rigidbody2D rb;
+
+    public BossScript bossScript;
+    public PlayerScript playerScript;
 
     public void ShootBullet(Transform shootPoint)
     {
@@ -35,4 +38,18 @@ public class Projectile : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Boss")
+        {
+            Destroy(gameObject);
+            bossScript.hp -= playerScript.damage;
+        }
+        if (collision.gameObject.tag == "World")
+        {
+            Destroy(gameObject);
+        }
+    }
+
 }
