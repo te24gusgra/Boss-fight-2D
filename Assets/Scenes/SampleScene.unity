@@ -1285,6 +1285,7 @@ GameObject:
   - component: {fileID: 293993400}
   - component: {fileID: 293993399}
   - component: {fileID: 293993402}
+  - component: {fileID: 293993403}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Boss
@@ -1501,6 +1502,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.51112425, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &293993403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293993396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d9036deaf35004384a4ede0873b389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossScript
+  hp: 30
+  damage: 1
+  player: {fileID: 1633131527}
 --- !u!1 &417927783
 GameObject:
   m_ObjectHideFlags: 0
@@ -52594,10 +52610,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1633131529}
   - component: {fileID: 1633131534}
-  - component: {fileID: 1633131531}
-  - component: {fileID: 1633131532}
   - component: {fileID: 1633131530}
   - component: {fileID: 1633131533}
+  - component: {fileID: 1633131535}
+  - component: {fileID: 1633131531}
+  - component: {fileID: 1633131532}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -52782,6 +52799,20 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1633131535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633131527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0155e345216662f458ec4048815b56ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerScript
+  hp: 3
+  damage: 10
 --- !u!1 &2133702985
 GameObject:
   m_ObjectHideFlags: 0

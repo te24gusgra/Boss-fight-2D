@@ -6,11 +6,12 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
     [SerializeField] private float lifetime = 3f;
+    public int fireBallDamage = 10;
+
     private float lifeTimer;
     public Rigidbody2D rb;
 
-    public BossScript bossScript;
-    public PlayerScript playerScript;
+    [SerializeField] public GameObject boss;
 
     public void ShootBullet(Transform shootPoint)
     {
@@ -43,13 +44,13 @@ public class Projectile : MonoBehaviour
     {
         if (collision.gameObject.tag == "Boss")
         {
+            BossScript bossScript = boss.GetComponent<BossScript>();
+            bossScript.Damage(fireBallDamage);
             Destroy(gameObject);
-            bossScript.hp -= playerScript.damage;
         }
         if (collision.gameObject.tag == "World")
         {
             Destroy(gameObject);
         }
     }
-
 }
