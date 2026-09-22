@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class BossScript : MonoBehaviour
 {
-    public int hp = 30;
-    public int damage = 1;
+    public int hp = 500;
+    public int bossDamage = 1;
 
     [SerializeField] public GameObject player;
+
+    [SerializeField] public PlayerScript playerScript;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player.GetComponent<PlayerScript>();
+        playerScript = player.GetComponent<PlayerScript>();
     }
 
     // Update is called once per frame
@@ -19,22 +21,21 @@ public class BossScript : MonoBehaviour
     {
         if (hp <= 0)
         {
+            Debug.Log("Boss: Nu dog jag");
             Destroy(gameObject);
-            Console.WriteLine("Boss: Nu dog jag");
         }
     }
 
     public void Damage(int damage)
     {
-        Console.WriteLine("Aj");
+        hp -= damage;
     }
 
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    Console.WriteLine(collision.gameObject.tag);
-    //    if (collision.gameObject.tag == "Fireball")
-    //    {
-    //        Console.WriteLine("Aj");
-    //    }
-    //}
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            playerScript.Damage(bossDamage);
+        }
+    }
 }

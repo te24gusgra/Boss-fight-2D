@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Boss
   - Fireball
+  - World
   layers:
   - Default
   - TransparentFX

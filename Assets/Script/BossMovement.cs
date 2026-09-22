@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class BossMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
     }
     private Vector2 _movementDelta;
     // Update is called once per frame
@@ -21,13 +23,5 @@ public class BossMovement : MonoBehaviour
     {
         rb.MovePosition(rb.position + _movementDelta * Time.fixedDeltaTime);
 
-    }
-
-    private void BossCollisionEnter2D(Collision2D coll)
-    {
-        if (coll.gameObject.tag == "Player")
-        {
-            Destroy(coll.gameObject);
-        }
     }
 }

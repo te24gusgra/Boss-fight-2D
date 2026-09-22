@@ -13,6 +13,7 @@ public class Projectile : MonoBehaviour
 
     [SerializeField] public GameObject boss;
 
+
     public void ShootBullet(Transform shootPoint)
     {
         lifeTimer = 0;
@@ -27,7 +28,7 @@ public class Projectile : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        boss = GameObject.FindWithTag("Boss");
     }
 
     // Update is called once per frame

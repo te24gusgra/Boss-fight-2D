@@ -171,5 +171,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
   speed: 5
   lifetime: 3
+  fireBallDamage: 10
   rb: {fileID: 8265341371208581128}
-  bossScript: {fileID: 0}
+  boss: {fileID: 0}
