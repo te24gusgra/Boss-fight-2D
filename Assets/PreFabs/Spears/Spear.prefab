@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 2043254522020738454}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2955, y: -0.23351, z: 0}
-  m_LocalScale: {x: 2.0253, y: 2.0253, z: 2.0253}
+  m_LocalPosition: {x: 0.29341, y: -0.23481, z: 0}
+  m_LocalScale: {x: 1.5956731, y: 1.5956731, z: 1.5956731}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -108,11 +108,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
   speed: 5
   lifetime: 3
-  fireBallDamage: 10
-  spearDamage: 10
   owner: 
   rb: {fileID: -8733367947164381329}
-  boss: {fileID: 0}
 --- !u!70 &6032495127998510853
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
