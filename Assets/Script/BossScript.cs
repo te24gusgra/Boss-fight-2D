@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class BossScript : MonoBehaviour
 {
+    [SerializeField]
     public int hp = 500;
     public int bossDamage = 1;
 
-    [SerializeField] public GameObject player;
+    [SerializeField] 
+    public GameObject player;
 
-    [SerializeField] public PlayerScript playerScript;
+    [SerializeField] 
+    public PlayerScript playerScript;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -35,7 +38,7 @@ public class BossScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            playerScript.Damage(bossDamage);
+            //playerScript.Damage(bossDamage);
         }
     }
 }
