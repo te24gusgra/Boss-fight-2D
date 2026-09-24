@@ -1,3 +1,4 @@
+using System.Threading;
 using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
@@ -16,6 +17,7 @@ public class PlayerScript : MonoBehaviour
         if (hp <= 0)
         {
             Destroy(gameObject);
+            Thread.Sleep(1000);
         }
     }
     public void Damage(int damage)

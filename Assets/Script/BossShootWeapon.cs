@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BossShootWeapon : MonoBehaviour
 {
-    [SerializeField] private float cooldown;
+    [SerializeField] private float cooldown = 10f;
     private float cooldownTimer;
 
     [SerializeField] private GameObject spearPrefab;
@@ -25,8 +25,7 @@ public class BossShootWeapon : MonoBehaviour
     private void Shoot()
     {
         if (cooldownTimer < cooldown) return;
-        Debug.Log("Här ska jag skjuta");
-        cooldown = 10f;
+
         cooldownTimer = 0;
 
         GameObject spear = Instantiate(spearPrefab, shootPoint.position, shootPoint.rotation, null);

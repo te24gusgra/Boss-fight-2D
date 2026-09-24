@@ -8,12 +8,14 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private float lifetime = 3f;
     public int fireBallDamage = 10;
+    public int spearDamage = 1; 
     public string owner;
 
     private float lifeTimer;
     public Rigidbody2D rb;
 
-    [HideInInspector] [SerializeField] private GameObject boss;
+    private GameObject boss;
+    private GameObject player;
 
 
     public void ShootBullet(Transform firePoint)
@@ -37,15 +39,14 @@ public class Projectile : MonoBehaviour
         transform.rotation = shootPoint.rotation;
         gameObject.SetActive(true);
 
-        rb.AddForce(-transform.up * speed, ForceMode2D.Impulse);
+        rb.AddForce(transform.up * speed, ForceMode2D.Impulse);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Debug.Log("Jag är ett nytt spjut och jag har stora drömmar i livet!");
-        Debug.Log(transform.position);
         boss = GameObject.FindWithTag("Boss");
+        player = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
@@ -68,9 +69,10 @@ public class Projectile : MonoBehaviour
         }
         if (owner == "Boss" && collision.gameObject.tag == "Player")
         {
-            BossScript bossScript = boss.GetComponent<BossScript>();
-            bossScript.Damage(fireBallDamage);
             Destroy(gameObject);
+            PlayerScript playerScript = player.GetComponent<PlayerScript>();
+            playerScript.Damage(spearDamage);
+
         }
         if (collision.gameObject.tag == "World")
         {
