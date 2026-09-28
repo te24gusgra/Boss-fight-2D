@@ -1,38 +1,30 @@
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 //This script controls the players movement
 
 public class PlayerMovement : MonoBehaviour
 {
     //Variables
-    private float playerSpeed = 125f;
-    public Rigidbody2D rb;
-    private Vector2 input;
+    [SerializeField] private float playerSpeed = 1f;
+    private Rigidbody2D _rb;
+    private Vector2 _movementInput;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Awake()
     {
-        //Gets the players rigidbody
-        rb = GetComponent<Rigidbody2D>();
-    }
-
-    // Update is called once per frame
-   
-    void Update()
-    {
-        //Detects the inputs
-        input.x = Input.GetAxisRaw("Horizontal");
-        input.y = Input.GetAxisRaw("Vertical");
-
-        //Makes so you dont go faster by moving diagonal
-        input.Normalize();
+        _rb = GetComponent<Rigidbody2D>();
     }
 
     private void FixedUpdate()
     {
         //Adds the velocity
-        rb.linearVelocity = input * playerSpeed * Time.deltaTime;
+        _rb.linearVelocity = _movementInput * playerSpeed * Time.deltaTime;
+    }
+
+    private void OnMove(InputValue inputValue)
+    {
+        _movementInput = inputValue.Get<Vector2>();
     }
 }

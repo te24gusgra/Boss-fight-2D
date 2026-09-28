@@ -1642,7 +1642,7 @@ Camera:
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 4
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -1668,7 +1668,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1693,11 +1693,11 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -0.49, y: 0.5500002, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1633131529}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &532052365
 GameObject:
@@ -50725,7 +50725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 054ea1a5aa1c04c4f8289c9c90b7efff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossShootWeapon
-  cooldown: 10
+  cooldown: 8
   spearPrefab: {fileID: 2043254522020738454, guid: a60d41a1c020cf84c8250b13aec7bee8, type: 3}
   shootPoint: {fileID: 1099126396}
 --- !u!212 &827715678
@@ -52708,6 +52708,7 @@ GameObject:
   - component: {fileID: 1633131535}
   - component: {fileID: 1633131531}
   - component: {fileID: 1633131532}
+  - component: {fileID: 1633131536}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -52723,14 +52724,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1633131527}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.49, y: -4.32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 914384196}
   - {fileID: 532052366}
-  - {fileID: 519420032}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1633131530
@@ -52745,7 +52745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8b5186a0f7b0bf418402a41a5dfa918, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  rb: {fileID: 1633131531}
+  playerSpeed: 125
 --- !u!50 &1633131531
 Rigidbody2D:
   serializedVersion: 5
@@ -52830,9 +52830,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a6f35456b8213594aa4ae3a9e3cdc54e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
-  aimTransform: {fileID: 914384196}
-  playerTransform: {fileID: 532052366}
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAimWeapon
 --- !u!212 &1633131534
 SpriteRenderer:
   serializedVersion: 2
@@ -52905,6 +52903,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerScript
   hp: 3
+  camera: {fileID: 519420032}
+--- !u!114 &1633131536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633131527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+  m_Actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: 
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &2133702985
 GameObject:
   m_ObjectHideFlags: 0
@@ -52958,6 +52987,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 619394802}
-  - {fileID: 2133702987}
+  - {fileID: 519420032}
   - {fileID: 1633131529}
+  - {fileID: 2133702987}
   - {fileID: 293993398}

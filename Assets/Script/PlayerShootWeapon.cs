@@ -24,10 +24,10 @@ public class PlayerShootWeapon : MonoBehaviour
         cooldownTimer += Time.deltaTime;
 
         //When the player presses the mouse button it tries to shoot
-        if (Input.GetMouseButtonDown(0))
-        {
-            Shoot();
-        }
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    Shoot();
+        //}
     }
 
 

@@ -7,6 +7,7 @@ public class PlayerScript : MonoBehaviour
 {
     //Variables
     public int hp = 3;
+    public Transform camera;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

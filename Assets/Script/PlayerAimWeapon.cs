@@ -1,42 +1,27 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 //This script makes the player aim and look towards the mouse
 
 public class PlayerAimWeapon : MonoBehaviour
 {
-    //Variables
-    [SerializeField] private Transform aimTransform;
-    [SerializeField] private Transform playerTransform;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected void LookAt(Vector3 target)
     {
-        
+        float lookAngle = AngleBetweenTwoPoints(transform.position, target) - 90;
+
+        transform.eulerAngles = new Vector3 (0, 0, lookAngle);
     }
 
-    // Update is called once per frame
-    void Update()
+    private float AngleBetweenTwoPoints(Vector3 a, Vector3 b)
     {
-        //Gets the posisition and direction of the mouse and player
-        Vector3 mousePosition = GetMouseWorldPosition(); 
-        Vector3 aimDirection = (mousePosition - aimTransform.position).normalized;
-        Vector3 playerPosition = GetMouseWorldPosition();
-        Vector3 playerDirection = (mousePosition - aimTransform.position).normalized;
-
-        //Gets the angle of the direction of the mouse to use
-        float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
-
-        //
-        aimTransform.eulerAngles = new Vector3(0, 0, angle + 90);
-        playerTransform.eulerAngles = new Vector3(0, 0, angle + 90);
+        return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
     }
 
-    private Vector3 GetMouseWorldPosition()
+    private void OnLook(InputValue inputValue)
     {
-        //
-        Vector3 mouseScreenPosition = Input.mousePosition;
-        mouseScreenPosition.z = 10f;
-        return Camera.main.ScreenToWorldPoint(mouseScreenPosition);
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(inputValue.Get<Vector2>());
+        LookAt(mousePosition);
     }
+
 }

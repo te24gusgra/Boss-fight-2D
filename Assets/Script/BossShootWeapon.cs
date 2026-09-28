@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossShootWeapon : MonoBehaviour
 {
     //Variables
-    [SerializeField] private float cooldown = 10f;
+    [SerializeField] private float cooldown = 8f;
     private float cooldownTimer;
     [SerializeField] private GameObject spearPrefab;
     [SerializeField] private Transform shootPoint;
