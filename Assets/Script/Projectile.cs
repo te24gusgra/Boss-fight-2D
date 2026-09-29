@@ -13,8 +13,8 @@ public class Projectile : MonoBehaviour
     private int fireBallDamage = 10;
     private int spearDamage = 1; 
     public string owner;
-
     private float lifeTimer;
+    
     public Rigidbody2D rb;
 
     private GameObject boss;

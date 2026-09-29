@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -7,8 +8,11 @@ using UnityEngine;
 public class BossScript : MonoBehaviour
 {
     //Variables
-    [SerializeField] public int hp = 500;
-    public int bossDamage = 1;
+    private int hp = 500;
+    private int maxHp = 500;
+    private int bossDamage = 1;
+
+    [SerializeField] private TMP_Text hpCounter;
 
     [SerializeField] public GameObject player;
     [SerializeField] public PlayerScript playerScript;
@@ -17,6 +21,9 @@ public class BossScript : MonoBehaviour
     {
         //Gets the players script
         playerScript = player.GetComponent<PlayerScript>();
+
+        //Shows how much hp the boss has left
+        hpCounter.text = $"{hp}/{maxHp}";
     }
 
     // Update is called once per frame
@@ -30,10 +37,11 @@ public class BossScript : MonoBehaviour
         }
     }
 
-    //The boss takes damage
+    //The boss takes damage and updates the text so you can see how much hp the boss has left
     public void Damage(int damage)
     {
         hp -= damage;
+        hpCounter.text = $"{hp}/{maxHp}";
     }
 
     //When the player collides with the boss the players takes damage

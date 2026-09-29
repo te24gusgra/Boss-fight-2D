@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 //This script is used so the player is able to shoot and it having a cooldown
 
@@ -24,12 +25,11 @@ public class PlayerShootWeapon : MonoBehaviour
         cooldownTimer += Time.deltaTime;
 
         //When the player presses the mouse button it tries to shoot
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    Shoot();
-        //}
+        if (Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            Shoot();
+        }
     }
-
 
     private void Shoot()
     {

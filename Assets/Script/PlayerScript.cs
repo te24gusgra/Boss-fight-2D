@@ -1,4 +1,6 @@
 using System.Threading;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 //This script controlls the players hp and damage taken
@@ -6,13 +8,15 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     //Variables
-    public int hp = 3;
-    public Transform camera;
+    private int hp = 3;
+    private int maxHp = 3;
 
+    [SerializeField] private TMP_Text hpCounter;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        //Displays how much hp the player has left
+        hpCounter.text = $"{hp}/{maxHp}";
     }
 
     // Update is called once per frame
@@ -24,9 +28,10 @@ public class PlayerScript : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
-    //The player takes damage
+    //The player takes damage and updates how much hp the player has left
     public void Damage(int damage)
     {
         hp -= damage;
+        hpCounter.text = $"{hp}/{maxHp}";
     }
 }
